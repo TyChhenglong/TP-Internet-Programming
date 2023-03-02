@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+    <style>
+        .container{
+            width: 400px;
+            height: 700px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .main{
+            width: 98%;
+            height: 85%;
+            background-color: #eee;
+            font-family: 'fira sans', sans-serif;
+            box-shadow: 0 0 0 5px black;
+        }
+        .main h1{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3rem;
+        }
+        #count{
+            font-size: 8rem;
+            font-weight: 700;
+            text-align: center;
+            color: rgb(6, 153, 6);
+        }
+        .counter_control button{
+            margin-left: 20px;
+            width: 100px;
+            padding: 7px;
+        }
+        button[id="decrease"]:hover{
+            background-color: dodgerblue;
+            color: #ffffff;
+        }
+        button[id="reset"]:hover{
+            background-color: red;
+            color: #ffffff;
+        }
+        button[id="increase"]:hover{
+            background-color: dodgerblue;
+            color: #ffffff;
+        }
+        button{
+            appearance: none;
+            text-transform: uppercase;
+            transition: 0.3 ease-out;
+            cursor: pointer;
+        }
+        button:active{
+            transform: scale(1.01);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="main">
+            <h1>Counter</h1><br>
+            <div id="count">0</div>
+            <div class="counter_control">
+                <button id="decrease">Decrease</button>
+                <button id="reset">Reset</button>
+                <button id="increase">Increase</button>
+            </div>
+        </div>
+    </div>
+    <script>       
+        class NumberCounter {
+            constructor() {
+                this.count = 0;
+            }
+
+            increment() {
+                this.count++;
+                this.updateCounter();
+            }
+
+            decrement() {
+                this.count--;
+                this.updateCounter();
+            }
+
+            reset() {
+                this.count = 0;
+                this.updateCounter();
+            }
+
+            updateCounter() {
+                localStorage.setItem("count", this.count);
+                document.querySelector("#count").innerHTML = this.count;
+            }
+        }
+
+        const counter = new NumberCounter();
+        document.querySelector("#increase").addEventListener("click", () => {
+        counter.increment();
+        });
+
+        document.querySelector("#decrease").addEventListener("click", () => {
+        counter.decrement();
+        });
+
+        document.querySelector("#reset").addEventListener("click", () => {
+        counter.reset();
+        });
+
+        window.addEventListener("load", () => {
+            const storedCount = localStorage.getItem("count");
+            if (storedCount) {
+                counter.count = parseInt(storedCount);
+                counter.updateCounter();
+            }
+        });
+    </script>
+</body>
+</html>

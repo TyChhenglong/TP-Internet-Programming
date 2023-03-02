@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tap</title>
+    <style>
+        .container{
+            width: 600px;
+            height: 600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .main_box{
+            width: 500px;
+            height: 530px;
+            background-color: #ccc;
+            padding: 0 1rem;
+            padding-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 0 0 4px black;
+            flex-direction: column;
+            align-items: center;
+        }
+        .text{
+            width: 100%;
+            height: 10%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        header{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        p{
+            font-size: 9px;
+        }
+        .image{
+            width: 90%;
+            height: 40%;
+            margin: 25px;
+        }
+        .image img{
+            width: 100%;
+            height: 100%;
+            border-radius: 7px;
+        }
+        .content{
+            width: 100%;
+            height: 18%;
+            margin-top: 15px;
+            background-color: #a9a1a1c8;
+            display: flex;
+        }
+        .menu{
+            width: 33.4%;
+            height: 20%;
+            justify-content: center;
+            align-items: center;
+        }
+        .content button{
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            border: none;
+            transition: 0.3s;
+            background-color: inherit;
+        }
+        .content button:hover{
+            background-color: rgba(255, 255, 255, 0.815);
+        }
+        .sub_content{
+            display: none;
+            padding: 6px 12px;
+            border-top: none;
+            background-color: rgba(255, 255, 255, 0.815);    
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="main_box">
+            <header>About</header>
+            <div class="text">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque sunt ratione temporibus?</p>
+            </div>
+            <div class="image">
+                <img src="./cristiano-ronaldo-669725.png" alt="">
+                <div class="content">
+                    <button class="menu" onclick="openCity(event, 'History')">History</button>  
+                    <button class="menu" onclick="openCity(event, 'Version')">Version</button> 
+                    <button class="menu" onclick="openCity(event, 'Goals')">Goals</button>  
+                </div> 
+                  <div id="History" class="sub_content">
+                    <h3>History</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis facilis error quaerat iste, obcaecati officia maxime dolorum consequatur animi ratione quibusdam! Provident, officiis placeat unde, reprehenderit possimus repellat in, veniam fuga dignissimos maiores velit? Vero voluptatibus tempore dignissimos quibusdam dolorum, est ducimus sequi veritatis reprehenderit. Ipsam tenetur, aspernatur odit, excepturi quam explicabo repellendus maiores laborum reiciendis earum tempora a exercitationem magnam fugit, cumque eum nostrum. Eaque, error. Soluta, hic voluptas.</p>
+                  </div>
+                  
+                  <div id="Version" class="sub_content">
+                    <h3>Version</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus praesentium suscipit tempora ullam eaque natus id ipsum minus, facere enim aut neque ex soluta sunt perspiciatis minima nisi, maxime odio ratione quibusdam, magni doloremque distinctio? Sunt molestiae, quas quo illo vero libero laudantium minus impedit aliquam praesentium, odit distinctio vel!</p> 
+                  </div>
+                  <div id="Goals" class="sub_content">
+                    <h3>Goals</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis dicta corporis nemo quaerat accusamus nisi perferendis, facilis distinctio ullam odio magni, consequuntur quis voluptatem eligendi aperiam vero non eum quasi reiciendis officiis iure nesciunt accusantium modi? Placeat quam voluptate quos dignissimos praesentium quidem error, repellat earum omnis quo expedita impedit perspiciatis reiciendis accusamus molestiae ad blanditiis odio quisquam quae soluta?</p>
+                  </div>  
+            </div>
+        </div>
+    </div>
+    <script>
+        function openCity(evt, cityName) {
+            var i, sub_content, menu;
+            sub_content = document.getElementsByClassName("sub_content");
+            for (i = 0; i < sub_content.length; i++) {
+                sub_content[i].style.display = "none";
+            }
+            menu = document.getElementsByClassName("menu");
+            for (i = 0; i < menu.length; i++) {
+                menu[i].className = menu[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Color</title>
+    <style>
+            body {
+            padding: 30px;
+            margin: 45px;
+            background-color: rgb(244, 235, 235);
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+        }
+        .container {
+            width: 500px;
+            height: auto;
+            margin: 0 auto;
+            padding-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            box-shadow: 0 0 0 5px black;
+            padding: 20px;
+        }
+        legend{
+            padding: 20px;
+            background-color: #fff;
+            color: #0066A2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .color {
+            text-align: center;
+            width: 30rem;
+            font-size: large;
+            font-weight: 700;
+
+        }
+        .color .head {
+            
+            background-color: rgb(39, 37, 37);
+            height: 100px;
+        }
+        .head>h2 {
+            color: aliceblue;
+            padding-top: 10px;
+        }
+        .head .result {
+            color: rgb(0, 136, 255);
+        }
+        .color .button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 85px;
+            box-shadow: rgba(4, 28, 56, 0.3) 0px 0px 0px 0px;
+            background-color: #fcf7f7;
+        }
+        .button>button {
+            margin: 20px;
+        }
+        .items {
+            display: flex;
+            flex-wrap: wrap;
+            height: auto;
+            justify-content: end;
+            background-color: #f9f9f9;
+            color: rgb(59, 57, 57);
+        }
+        .items .items-color {
+            width: 100%;
+            display: flex;
+            margin: 0 0 0 20px;
+        }
+        #generate-Btn,#reset-Btn {
+            cursor: pointer;
+            color: black;
+            border-style: outset;
+            border-color: #0066A2;
+            width: 13rem;
+            font: sans-serif;
+            font-weight: bold;
+            text-shadow: none;
+            height: 3rem;
+            margin-top: 0.745rem;
+            border-radius: 0.185rem;
+            margin: 0.65rem 20px 0.675rem 22px;
+            appearance: none;
+            background: none;
+        }
+        #reset-Btn {
+            appearance: none;
+            background: none;
+            color: black;
+            font: large bold;
+        }
+        #reset-Btn:hover{
+            background-color: black;
+            color: white;
+        }
+        #generate-Btn:hover{
+            background-color: black;
+            color: white;
+        }
+        .items-color .box {
+            height: 10px;
+            width: 20px;
+            margin: 5px;
+            border: 1px solid black;
+        }
+        .bottom {
+            height: 15vh;
+        }
+</style>
+</head>
+<body>
+    <div class="container">
+        <div class="color">
+            <legend>Random Color Generate</legend>
+            <div class="head">
+                <h2>Background Color: </h2>
+                <h3 class="result">#</h3>
+            </div>
+            <div class="button">
+                <button type="submit" id="generate-Btn">GENERATE</button>
+                <button type="submit" id="reset-Btn">RESET</button>
+            </div>
+            <div class="items"></div>
+            <div class="buttom"></div>
+        </div>
+    </div>
+    <script>
+        class Color {
+            colorType = '';
+            
+            constructor(type) {
+                this.colorType = type;
+            }
+
+            generate() {
+                let index;
+                var obj = [{}];
+                var data = JSON.parse(localStorage.getItem('color'));
+                if (!data) {
+                    index = 0;
+                } else {
+                    obj = Object.assign([{}], data);
+                    index = data.length;
+                }
+                console.log(index);
+                // colorData = getRandom();
+
+                for (let i = 0; i < 6; i++) {
+                    const random = Math.random(); //random 0-1
+                    const bit = (random * 16) | 0;
+                    this.colorType += (bit).toString(16);
+                };
+
+                obj[index] = Object.assign({}, {
+                    'color': `${this.colorType}`
+                });
+                console.log(obj);
+                this.colorType = '#';
+
+                localStorage.setItem('color', JSON.stringify(obj));
+                document.getElementsByClassName('items')[0].innerHTML += `<div class="items-color"><span>${obj[index].color}</span><div class="box"><div></div>`;
+                document.getElementsByClassName('box')[index].style.backgroundColor = `${obj[index].color}`;
+                document.getElementsByClassName('result')[0].innerHTML = `${obj[index].color}`;
+                document.getElementsByClassName('color')[0].style.backgroundColor = `${obj[index].color}`;
+                document.getElementsByClassName('bottom')[0].style.backgroundColor = `${obj[index].color}`;
+                document.getElementsByClassName('button')[0].style.backgroundColor = `${obj[index].color}`;
+
+                return this.obj;
+            }
+            getRecords() {
+                this.records = JSON.parse(localStorage.getItem('color'));
+
+                return this.records;
+            }
+
+            reset() {
+                localStorage.removeItem('color');
+            }
+
+        }
+        let HEX = '#';
+        var co = new Color(HEX);
+        var records = co.getRecords();
+        console.log(records)
+        if (!records) {
+            console.log(co.getRecords());
+        } else {
+            for (record in records) {
+                document.getElementsByClassName('items')[0].innerHTML += `<div class="items-color"><span>${records[record].color}</span><div class="box"><div></div>`;
+                document.getElementsByClassName('box')[record].style.backgroundColor = `${records[record].color}`;
+            }
+        }
+
+        window.addEventListener('click', function(event) {
+            if (event.target.id == 'generate-Btn') {
+                co.generate();
+            } else if (event.target.id == 'reset-Btn') {
+                co.reset();
+                document.getElementsByClassName('items')[0].innerHTML = '';
+                document.getElementsByClassName('result')[0].innerHTML = '';
+                document.getElementsByClassName('color')[0].style.backgroundColor = '';
+                document.getElementsByClassName('bottom')[0].style.backgroundColor = '';
+                document.getElementsByClassName('button')[0].style.backgroundColor = '';
+            }
+        });
+    </script>
+</body>
+</html>

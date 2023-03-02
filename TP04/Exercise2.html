@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive</title>
+    <style>
+        .container{
+            width: 700px;
+            height: 800px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .content{
+            width: 95%;
+            height: 95%;
+            background-color: white;
+            box-shadow: 0 0 0 5px black;
+        }
+        .content h2{
+            color: midnightblue;
+        }
+        .content hr{
+            width: 50px;
+            padding: 2px;
+            border-radius: 10px;
+            background-color: orange;
+        }
+        .menu{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .menu button{
+            margin-left: 20px;
+            padding: 6px;
+            border-color: rgba(231, 156, 17, 0.899);
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .menu button a{
+            text-decoration: none;
+            color: rgba(235, 159, 19, 0.899);
+        }
+        .main{
+            width: 95%;
+            height: 80%;
+            margin: 16px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+        }
+        .box{
+            width: 100%;
+            height: 32%;
+            display: flex;
+            justify-content: space-between;
+        }
+        .image{
+            width: 38%;
+            height: 100%;
+        }
+        .text{
+            width: 60%;
+            height: 100%;
+        }
+        .image img{
+            width: 95%;
+            height: 95%;
+            border-radius: 7px;
+        }
+        .text legend{
+            color: midnightblue;
+        }
+        .text legend span{
+            float: right;
+            color: orange;
+        }
+        .text hr{
+            width: 100%;
+            padding: 0px;
+            background-color: gray;
+        }
+        .text p{
+            font-family: "Source Sans Pro", "Arial", sans-serif;
+            color:gray;
+        }
+        @media (max-width: 768px) {
+        .container {
+            width: 631px;
+            height: auto;
+        }
+        .image {
+            width: 55%;
+            margin: auto;
+        }
+        .image img {
+            width: 100%;
+            height: 80%;
+            border-radius: 5px;
+            box-shadow: 0 0 0 2px darkorange;
+        }
+        .box {
+            flex-direction: column;
+            background-color: white;
+            height: calc(66vh - 243px);
+        }
+        .text {
+            padding: 0px;
+            margin: 0 auto;
+            width: 55%;
+        }
+    }
+</style>
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <h2 align="center">Our Menu</h2>
+            <hr>
+            <div class="menu">
+                <button><a href="">All</a></button>
+                <button><a href="">Breafast</a></button>
+                <button><a href="">Lunch</a></button>
+                <button><a href="">Shackes</a></button>
+                <button><a href="">Dinner</a></button>
+            </div>
+            <div class="main">
+                <div class="box">
+                    <div class="image"><img src="../TP04/Image/pic1.jpg" alt=""></div>
+                    <div class="text">
+                        <legend>Ice Cream blue berry<span>$ 15.99</span></legend>
+                        <hr>
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt recusandae aliquid sed voluptatibus expedita dolor mollitia dignissimos cum quia alias.</p>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="image"><img src="../TP04/Image/pic2png.png" alt=""></div>
+                    <div class="text">
+                        <legend>Ice Cream blue berry<span>$ 10.99</span></legend>
+                        <hr>
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt recusandae aliquid sed voluptatibus expedita dolor mollitia dignissimos cum quia alias.</p>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="image"><img src="../TP04/Image/pic3.webp" alt=""></div>
+                    <div class="text">
+                        <legend>Ice Cream blue berry<span>$ 19.99</span></legend>
+                        <hr>
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt recusandae aliquid sed voluptatibus expedita dolor mollitia dignissimos cum quia alias.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
