@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convas</title>
+    <style>
+        .main{
+            width: 434px;
+            height: 530px;
+            background-color: gray;
+            position: relative;
+        }
+        .box{
+            width: 425px;
+            height: 480px;
+            background-color: white;
+            position: absolute;
+            top: 4px;
+            left: 4px;
+        }
+        input{
+            color: white;
+            position: absolute;
+            bottom: 2px;
+            left: 25%;
+        }
+        p{
+            color: white;
+            position: absolute;
+            bottom: 7px;
+            left: 25%;  
+        }
+        #myConvas{
+            width: 1000px;
+            height: 100px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="box">
+            <canvas id= "myCanvas"></canvas>
+        </div>
+      <input type="file" id="imageInput" accept = "image/*">
+      <p>Convas👻: Insert me an image please!</p>
+    </div>
+</body>
+</html>
+    <script>
+        let imgInput = document.getElementById('imageInput');
+            imgInput.addEventListener('change', function(e) {
+                if(e.target.files) {
+                    let imageFile = e.target.files[0]; //here we get the image file
+                    var reader = new FileReader();
+                    reader.readAsDataURL(imageFile);
+                reader.onloadend = function (e) {
+                    var myImage = new Image(); // Creates image object
+                    myImage.src = e.target.result; // Assigns converted image to image object
+                    myImage.onload = function(ev) {
+                    var myCanvas = document.getElementById("myCanvas"); // Creates a canvas object
+                    var myContext = myCanvas.getContext("2d"); // Creates a contect object
+                    myCanvas.width = myImage.width; // Assigns image's width to canvas
+                    myCanvas.height = myImage.height; // Assigns image's height to canvas
+                    myContext.drawImage(myImage,0,0); // Draws the image on canvas
+                    let imgData = myCanvas.toDataURL(); // Assigns image base64 string in jpeg format to a variable
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

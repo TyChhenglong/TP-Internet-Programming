@@ -1,0 +1,160 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com/"></script>
+    <script src="/Tailwindcss.js" ></script>
+    <title>Video Multiple Projection</title>
+</head>
+<body >
+    
+    <style>
+        body{
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        #container{
+            width: 35vw;
+            border: 8px solid #808080;
+            
+        }
+        .canvas{
+            width: 100%;
+        }
+        .input{
+            width: 100%;
+            height: fit-content;
+            background-color: #808080;  
+            display: flex;
+            justify-content: center;
+        }
+        .sub_input_contianer{
+            width: 80%;
+        }
+        @media only screen and (max-width: 700px){
+            #container{
+                width: 80vw;
+            }
+            .canvas{
+                width: 100%;
+            }
+            .sub_input_contianer{
+                width: 100%;
+            }
+        }
+        button{
+            padding: .2rem .7rem;
+            background-color: #fcf6ff;
+            border-radius: 2px;
+        }
+        #main{
+            width: 90vw;
+            height: 50%;
+            display: flex;
+            /* flex-direction: column; */
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .muliple_Canvas{
+            height: 100%;
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: .7rem;
+        }
+        .muliple_Canvas >*{
+            border: 2px solid black;
+            height: 100%;
+        }
+    </style>
+    
+    <div id="main">
+        <div id="container" >
+            <canvas class="canvas"></canvas>
+            <div class="input">
+                <div class="sub_input_contianer">
+                    <video src="" id="video" style="display: none;"></video>
+                    <p>Canvas 👻: Insert me an image please</p>
+                    <!-- <input type="file"  name="image" id="image" accept="image/*" > -->
+                    <center><button class="start">Pause</button></center>
+                </div>
+            </div>
+
+        </div>
+        <div class="muliple_Canvas">
+            <canvas class="cv cv_1"></canvas>
+            <canvas class="cv cv_2"></canvas>
+            <canvas class="cv cv_3"></canvas>
+            <canvas class="cv cv_4"></canvas>
+            <canvas class="cv cv_5"></canvas>
+            <canvas class="cv cv_6"></canvas>
+        </div>
+    </div>
+    <script>
+        var Video=document.querySelector("#video")
+        var Canvas=document.querySelector(".canvas")
+        var Context=Canvas.getContext('2d');
+        let src = new cv.Mat(height, width, cv.CV_8UC4);
+        let dst = new cv.Mat(height, width, cv.CV_8UC1);
+        const FPS = 30;
+        navigator.mediaDevices.getUserMedia({
+            audio:false,
+            video:true
+        }).then((stream)=>{
+            Video.srcObject=stream
+        }).catch((err)=>{
+            console.log(err.message,err.name)
+        }) 
+        
+        var playing=false;
+        const start=()=>{
+            
+            if(playing){
+                // console.log(Video);
+                Video.play()
+                const w=Video.videoWidth;
+                const h=Video.videoHeight;
+                const nh=(h/w)*Canvas.width;
+                // console.log(nh);    
+                Canvas.height=nh;
+                Context.drawImage(Video,0,0,Canvas.width,Canvas.height)
+                setTimeout(start,1000/30)
+                let i=1,j=1;
+                document.querySelectorAll(".cv").forEach(item=>{
+                    const context=item.getContext('2d')
+                    const video=Video;
+                    // const h= video.videoWidth
+                    context.drawImage(video,0,0,)
+                })
+                
+            }            
+        }
+        document.querySelector(".start").addEventListener('click',()=>{
+            playing=playing?false:true;
+            start()
+            document.querySelector(".start").innerText=playing?"Pause":"Start";
+            
+        })
+        
+        
+        function processVideo() {
+            let begin = Date.now();
+            context.drawImage(video, 0, 0, width, height);
+            src.data.set(context.getImageData(0, 0, width, height).data);
+            cv.cvtColor(src, dst, cv.COLOR_RGBA2GRAY);
+            cv.imshow("canvasOutput", dst); // canvasOutput is the id of another <canvas>;
+                // schedule next one.
+                let delay = 1000/FPS - (Date.now() - begin);
+                setTimeout(processVideo, delay);
+            }
+            // schedule first one.
+            setTimeout(processVideo, 0);
+        </script>
+    </body>
+    </html>

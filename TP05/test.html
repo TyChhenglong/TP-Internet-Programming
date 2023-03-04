@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Gender Guesser</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      #container {
+        width: 600px;
+        margin: 50px auto;
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+      form {
+        display: flex;
+        justify-content: center;
+      }
+
+      input[type=text] {
+        padding: 10px;
+        margin-right: 10px;
+        width: 300px;
+        font-size: 16px;
+      }
+
+      button {
+        padding: 10px;
+        font-size: 16px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #3e8e41;
+      }
+
+      #result {
+        text-align: center;
+        margin-top: 50px;
+        font-size: 24px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <h1>Gender Guesser</h1>
+      <form>
+        <input type="text" id="name" placeholder="Enter a name">
+        <button type="button" onclick="getGender()">Guess</button>
+      </form>
+      <div id="result"></div>
+    </div>
+
+    <script>
+      function getGender() {
+        const name = document.getElementById("name").value;
+        const url = `https://api.genderize.io?name=${name}`;
+
+        fetch(url)
+          .then(response => response.json())
+          .then(data => {
+            if (data.gender) {
+              document.getElementById("result").innerHTML = ${name} is most likely ${data.gender} (${(data.probability * 100).toFixed(2)}% confident);
+            } else {
+              document.getElementById("result").innerHTML = Sorry, we couldn't guess the gender of ${name}.
+            }
+          })
+          .catch(error => console.error(error));
+      }
+    </script>
+  </body>
+</html>

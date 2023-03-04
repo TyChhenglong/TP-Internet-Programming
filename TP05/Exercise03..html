@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nationality Guessing</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+            }
+            body {
+            margin: 10px;
+            padding: 50px;
+            font-family:'Vernon Adams';
+            display: flex;
+            justify-content: center;
+            }
+            .content {
+            width: 800px;
+            height: 600px;
+            padding: 2rem;
+            border: 5px solid black;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: auto;
+            }
+            .content>:nth-child(1) {
+            height: 50%;
+            }
+            .content>:nth-child(2) {
+            height: 18%;
+            font-family: Irish Grover;
+            font-size: 2rem;
+            }
+
+            .content>:nth-child(3) {
+            height: 15%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            column-gap: 1rem;
+            }
+            .content>:nth-child(3) input {
+            height: 80%;
+            border: 1px solid #d5d5d5e1;
+            border-radius: 7px;
+            }
+            img {
+            height: 8rem;
+            }
+            input {
+            width: 250px;
+            padding: 15px;
+            font-size: 15px;
+            }
+            input:focus::placeholder {
+            color: transparent ;
+            }
+            .content>:nth-child(3) button {
+            width: fit-content;
+            padding: 12px;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            border-radius: 6px;
+            border: none;
+            font-weight: bold;
+            background-color: hsl(220, 100%, 55%);
+            color: white;
+            }
+            .content>:nth-child(3) button:hover {
+            cursor: pointer;
+            }
+            #guessing {
+            height: 100%;
+            width: 21rem;
+            margin-top: 10px;
+            min-width: 10rem;
+            border-radius: 5px;
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            row-gap: 5%;
+            }
+            #guessing>*{
+            width: calc(100% - 1rem);
+            background-color: #e8e7e7;
+            border-radius: 10px;
+            border: 1px solid rgb(111, 111, 111);
+            padding: 0.7rem;
+            display: flex;
+            justify-content: space-between;
+            }
+            #guessing>*>:first-child{
+            font-weight: bold;
+            }
+            #guessing>*>:last-child{
+            font-weight: bold;
+            color:hsl(32, 87%, 50%);
+            }
+            .noData{
+            color:coral;
+            font-size: 3rem;
+            }
+            .center{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div style="font-size: 5rem;">
+            <img src="./globe-showing-americas_1f30e.png" alt="">
+        </div>
+        <div>I know your <span style="color:hsl(224, 92%, 49%)">Home</span></div>
+        <div>
+            <input type="text" id="name" placeholder=" Tell me your first name">
+            <button onclick="getAnActive()">Guess</button>
+        </div>
+        <div id="loading"></div>
+        <div id="guessing"></div>
+    </div>
+    <script>
+        const home = document.getElementById("guessing");
+        const name = document.getElementById("name");
+        const loading=document.getElementById("loading");
+        loading.style.visibility="hidden";
+
+        function getAnActive() {
+            if(noData()) return;
+            home.innerHTML="";
+            loading.style.visibility="visible";
+            fetch(`https://api.nationalize.io/?name=${name.value}`).then(async (res) => {
+
+                let data = await res.json();
+                let obj=data.country; 
+
+                if(nullCountry(obj)) return;
+                home.innerHTML="";
+                for(let n of obj){
+                    home.innerHTML+=`<div> <div>${n.country_id}</div> <div>${(n.probability*100).toFixed(1)}%</div> </div>`
+                }
+
+            }).then(()=>{
+                loading.style.visibility="hidden"
+            }).catch(()=>{
+                home.innerHTML=`<div> <div class="center"> <div class="noData ">Not Found!</div> </div> </div>`
+                loading.style.visibility="hidden"
+            })
+        }
+
+        function noData(){
+            if(name.value==""){
+                home.innerHTML=`<div> <div class="center"><div class="noData ">Not Found!</div> </div>< /div>`
+                return true;
+            }
+            return false;
+        }
+
+        function nullCountry(obj){
+            if(obj==undefined) return false;
+            if(obj.length==0){
+                home.innerHTML=`<div> <div class="center"><div class="noData ">Not Found!</div> </div> </div>`
+                return true;
+            }
+            return false;
+        }
+    </script>
+</body>
+</html>

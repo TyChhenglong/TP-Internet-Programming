@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrollable Content</title>
+    <style>
+        .container{
+            width: 600px;
+            height: auto;
+            background-color: snow;
+        }
+        .content{
+            color: white;
+            text-align: center;
+            background-color: rgba(255, 20, 145, 0.635);
+            padding: 10px;
+        }
+        .main{
+            font-size: 20px;
+            background-color: whitesmoke;
+            display: grid;
+            grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto;
+            /* overflow-x: auto;
+            height: 300px; */
+            overflow-y: auto;
+            width: 600px;
+        }
+        .box{
+            margin: 7px;
+            padding: 40px;
+            text-align: center;
+            background-color: rgba(0, 255, 17, 0.806);
+        }
+    </style>
+</head>
+<body>
+<button>
+    <div class="container">
+        <div class="content">
+            <p>Scrollable Vertically</p>
+        </div>
+        <div class="main">
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+        </div>
+    </div>
+</button>
+</body>
+</html>

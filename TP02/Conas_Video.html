@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convas Video</title>
+    <style>
+        body{
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        #container{
+            width: 37vw;
+            border: 8px solid #808080;
+
+        }
+        .canvas{
+            width: 100%;
+        }
+        .input{
+            width: 100%;
+            height: fit-content;
+            background-color: #808080;  
+            display: flex;
+            justify-content: center;
+        }
+        .sub_input_contianer{
+            width: 80%;
+        }
+        @media only screen and (max-width: 700px){
+            #container{
+                width: 80vw;
+            }
+            .canvas{
+                width: 100%;
+            }
+            .sub_input_contianer{
+                width: 100%;
+            }
+        }
+        button{
+            padding: .2rem .7rem;
+            background-color: #fcf6ff;
+            border-radius: 2px;
+        }
+    </style>
+    
+<body>
+    <div id="container" >
+        <canvas class="canvas"></canvas>
+        <div class="input">
+            <div class="sub_input_contianer">
+                <video src="" id="video" style="display: none;"></video>
+                <p>Canvas 👻: Insert me an image please</p>
+                <!-- <input type="file"  name="image" id="image" accept="image/*" > -->
+                <center><button class="start">Pause</button></center>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+     var Video=document.querySelector("#video")
+        var Canvas=document.querySelector(".canvas")
+        var Context=Canvas.getContext('2d');
+
+            navigator.mediaDevices.getUserMedia({
+                audio:false,
+                video:true
+            }).then((stream)=>{
+                Video.srcObject=stream
+            }).catch((err)=>{
+                console.log(err.message,err.name)
+            })
+ 
+        var playing=false;
+        const start=()=>{
+            
+            if(playing){
+                // console.log(Video);
+                Video.play()
+                const w=Video.videoWidth;
+                const h=Video.videoHeight;
+                const nh=(h/w)*Canvas.width;
+                        // console.log(nh);    
+                Canvas.height=nh;
+                Context.drawImage(Video,0,0,Canvas.width,Canvas.height)
+                setTimeout(start,1000/30)
+
+            }            
+        }
+        document.querySelector(".start").addEventListener('click',()=>{
+            playing=playing?false:true;
+            start()
+            document.querySelector(".start").innerText=playing?"Pause":"Start";
+
+        })
+        
+</script>
+</html>

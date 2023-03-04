@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Screollable Content</title>
+    <style>
+        .container{
+            width: 700px;
+            height: 500px;
+            background-color: aliceblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .main{
+            width: 80%;
+            height: 85%;
+           /* background-color: red;  */
+           display: flex;
+           position: relative;
+        }
+        .box1{
+            width: 10%;
+            height: 100%;
+            background-color: salmon;
+            display: flex;
+        }
+        .box2{
+            width: 45%;
+            height: 10%;
+            margin-left: 40px;
+            background-color: seagreen;
+            display: flex;
+        }
+        .sub_box{
+            width: 50px;
+            height: 425px;
+            background-color: seagreen;
+            margin-left: 100px
+        }
+        .box3{
+            width: 30%;
+            height: 10%;
+            margin-left: 30px;
+            background-color: rgba(255, 255, 0, 0.792);
+            display: flex;
+        }
+        .sub_box1{
+            width: 50px;
+            height: 425px;
+            background-color: rgba(255, 255, 0, 0.792);
+        }
+        .box4{
+            width: 150px;
+            height: 40px;
+            background-color: rgba(255, 255, 0, 0.792);
+            position: absolute;
+            bottom: 0px;
+            right: 16px;
+        }
+    </style>
+</head>
+<body>
+    <button>
+        <div class="container">
+            <div class="main">
+                <div class="box1"></div>
+                <div class="box2">
+                    <div class="sub_box"></div>
+                </div>
+                <div class="box3">
+                    <div class="sub_box1"></div>
+                </div>
+                <div class="box4"></div>
+            </div>
+        </div>
+    </button>
+</body>
+</html>

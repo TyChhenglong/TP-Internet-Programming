@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Actitvity Sugestion</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            width: 50%;
+            height: 700px;
+            background-color: antiquewhite;
+            margin: 0 auto;
+            text-align: center;
+            border: 5px solid black;
+        }
+        img{
+            margin-top: 15px;
+            width: 175px;
+            height: 180px;
+        }
+        p{
+            font-size: 40px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+        button{
+            width: 250px;
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        button:hover{
+            color: white;
+            background-color: cornflowerblue;
+        }
+        .main{
+            display: flex;
+            justify-content: center; 
+            position: relative;
+        }
+        .content{
+            width: 500px;
+            height: 250px;
+            background-color: #eee;
+            border-radius: 15px;
+            margin-top: 30px;    
+        }
+        .content svg{
+            width: 18px;
+            height: 20px;
+            color: blue;
+        }
+        .text1 svg{
+            position: absolute;
+            top: 22%;
+            left: 28%;
+        }
+        .text2 svg{
+            position: absolute;
+            top: 32%;
+            left: 28%;
+        }
+        .text3 svg{
+            position: absolute;
+            top: 42%;
+            left: 28%;
+        }
+        .text4 svg{
+            position: absolute;
+            top: 52%;
+            left: 28%;
+        }
+        #active-name{
+            font-size: 20px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="../TP05/blink-emoji.gif" alt="">
+        <p>Are you boring?</p>
+        <button onclick="getAnActivity()" class="btn btn-outline-primary  rounded-3 border-2 px-4 ">Tell me what you do?</button>
+        <div class="main">
+            <div class="content">
+                    <div id="loading-text"></div>
+                    <div id="activity-name" style="font-size: 20px; font-family: AKbalthom Seo; font-weight: bold  ;">Activity name</div>
+                    <div id="Type" style="text-align: left; padding-top: 10px; margin-left: 70px;">Activity type</div>
+                    <div id="participants" style="text-align: left; padding-top: 10px; margin-left: 70px;">participants</div>
+                    <div id="price" style="text-align: left; padding-top: 10px; margin-left: 70px;">price</div>
+                    <div id="link" style="text-align: left; padding-top: 10px; margin-left: 70px;">link</div>
+                    <div class="text1">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z" />
+                        </svg>
+                    </div><br>
+                    <div class="text2">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
+                        </svg>
+                    </div><br>
+                  <div class="text3">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                  </div><br>
+                  <div class="text4">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+                        </svg>
+                  </div>                                         
+            </div>
+        </div>
+    </div>
+    <script>
+        const loadingTextEle = document.getElementById("loading-text");
+        const activityNameEle = document.getElementById("activity-name");
+        const Type = document.getElementById("Type");
+        const participants = document.getElementById("participants");
+        const price = document.getElementById("price");
+        const link = document.getElementById("link");
+    
+    
+        activityNameEle.innerHTML = "";
+        Type.innerHTML = "";
+        participants.innerHTML = "";
+        price.innerHTML = "";
+        link.innerHTML = "";
+        
+    
+        function getAnActivity(){
+            activityNameEle.innerHTML = "";
+            Type.innerHTML = "";
+            participants.innerHTML = "";
+            price.innerHTML = "";
+            link.innerHTML = "";
+            loadingTextEle.hedden = false;
+    
+            fetch("http://www.boredapi.com/api/activity/")
+                .then(async (res) => {
+                    const data = await res.json();
+                    activityNameEle.innerHTML = data['activity'];
+                    Type.innerHTML ="Type: "+ data['type'];
+                    participants.innerHTML ="Participants: "+ data['participants'];
+                    price.innerHTML ="Price: "+ data['price'];
+                    link.innerHTML ="Link: "+ data['link'];
+    
+                }).catch((err) => {
+                    console.log(err);
+                }).finally(() => {
+                    loadingTextEle.hidden = true;
+                })
+        }
+    </script>
+</body>
+</html>

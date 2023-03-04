@@ -1,0 +1,151 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* font-family: "Oswald", sans-serif; */
+  font-family:"Calibri (Body)";
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  
+}
+body main {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  gap: 0.7rem;
+}
+body main > div {
+  width: 100%;
+  background-color: var(--bg-color);
+  box-shadow: 0 0 10px #000000;
+}
+body main .form {
+  flex: 1;
+}
+@media only screen and (max-width: 800px) {
+  body main .form {
+    flex: 2;
+  }
+}
+body main .form form {
+  padding: 0.5rem;
+}
+body main .form form fieldset {
+  border: 2px solid black;
+  border-radius: 4px;
+  padding: 0.6rem 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+body main .form form fieldset legend {
+  text-align: center;
+}
+body main .form form fieldset .input {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+body main .form form fieldset .input input {
+  width: 95%;
+  border: none;
+  outline: none;
+  border-radius: 2px;
+  padding: 0.3rem 0.5rem;
+}
+body main .form form fieldset .input input::-moz-placeholder {
+  text-transform: uppercase;
+}
+body main .form form fieldset .input input:-ms-input-placeholder {
+  text-transform: uppercase;
+}
+body main .form form fieldset .input input::placeholder {
+  text-transform: uppercase;
+}
+body main .form form fieldset input[type=submit] {
+  /* padding: 0.5rem 0.5rem; */
+  width: 50px;
+  padding: 5px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  border-radius: 2px;
+  background-color: rgba(0, 0, 0, 0.363);
+  color: rgb(0, 0, 0);
+  transition: 250ms;
+  font-weight: bold;
+}
+body main .form form fieldset input[type=submit]:hover {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.895);
+}
+body main .dashbord {
+  padding: 0.4rem 0.5rem;
+  flex: 3;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  overflow-y: scroll;
+}
+body main .dashbord::-webkit-scrollbar {
+  background: #f0f0f0;
+  width: 8px;
+}
+body main .dashbord::-webkit-scrollbar-thumb {
+  background: #696969;
+  border-radius: 999px;
+}
+body main .dashbord .card {
+  width: 11rem;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.5rem;
+  background-color: white;
+  border-radius: 3px;
+}
+body main .dashbord .card .action {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+body main .dashbord .card .action button {
+  cursor: pointer;
+  border: none;
+  display: flex;
+  padding: 0.3rem 0.4rem;
+  border-radius: 3px;
+  background-color: rgb(0, 0, 0);
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+body main .dashbord .card .action button:hover svg {
+  transition: 250ms;
+  color: var(--svg-btn);
+}
+body main .dashbord .card .action button svg {
+  --size:1rem;
+  width: var(--size);
+  height: var(--size);
+}
+body main .dashbord .card .infor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+}
+body main .dashbord .card .infor img {
+  width: 90%;
+}
+body main .dashbord .card .infor .book_infor {
+  width: 100%;
+}/*# sourceMappingURL=style.css.map */

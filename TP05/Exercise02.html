@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gender Guessing</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0px;
+            padding: 0px;
+        }
+        .content{
+            width: 700px;
+            height: 600px;
+            margin: 0 auto;
+            background-color: bisque;
+            text-align: center;
+            border: 5px solid black;
+        }
+        img{
+            width: 120px;
+            height: 130px;
+            margin-top: 30px;
+        }
+        h1{
+            font-family:'Vernon Adams';
+            color: blue;
+            margin: 20px;
+        }
+        input{
+            padding: 12px;
+            border-radius: 10px;
+            color: rgb(138, 133, 133);
+            cursor: pointer;
+        }
+        button{
+            width: 100px;
+            padding: 12px;
+            font-size: 14px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        button:hover{
+            background-color: blue;
+            color: white;
+        }
+        #result{
+            width: 315px;
+            height: 200px;
+            font-size: 45px;
+            font-weight: bold;
+            color:coral;
+            background-color: #fff;
+            margin-top: 20px;
+            margin-left: 27%;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <img src="../TP05/emoji-emoticon.gif" alt=""><br>
+        <h1>I know Your Gender</h1>
+        <input id="name-input" type="text" placeholder="Tell me your name">
+        <button onclick="getGender()">Guess</button>
+        <div id="result"></div>
+    </div>
+</body>
+<script>
+    const nameInput = document.getElementById("name-input");
+    const result = document.getElementById("result");
+
+    function getGender() {
+    const name = nameInput.value;
+    const gender = `https://api.genderize.io?name=${name}`;
+
+    fetch(gender)
+        .then(response => response.json())
+        .then(data => {
+        if (data.gender) {
+            result.innerHTML = `${name} is ${data.gender} ${(data.probability * 100)}%`;
+        }
+        else {
+            result.innerHTML = `Could not found name ${name}`;
+        }
+        })
+        .catch(error => {
+        console.error(error);
+        result.innerHTML = "An error occurred while fetching data";
+        });
+    }
+</script>
+</html>

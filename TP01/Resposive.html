@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>@media only screen</title>
+  <style>
+    .wrapper{
+      width: 100%;
+      height: 100%;
+      background-color: gray;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .content{
+      width: 80%;
+      height: 90%;
+      background-color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    @media (min-width: 792px) {
+      .big{
+        background-color: rgb(31, 163, 42);
+        color: white;
+        font-size: 40px;
+        padding: 10px 20px;
+        position: absolute;
+     }
+    }
+    @media (max-width: 792px) {
+      .small{
+        background-color:rgba(255, 0, 0, 0.849);
+        color: white;
+        font-size: 30px;
+        padding: 10px 20px;
+        position: absolute;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="content">
+      <span class="small">I'm SMALL 😒</span>  
+      <span class="big">I'm BIG 😋</span> 
+    </div>
+  </div>
+</body>
+</html>

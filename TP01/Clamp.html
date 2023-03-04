@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clamp</title>
+    <style>
+         .wraper{
+           background-color: rgba(128, 128, 128, 0.909);
+           width: 400px;
+           height: 300px;
+           display: flex;
+           justify-content: center;
+           align-items: center;
+         }
+         .content{
+            width: 350px;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(255, 255, 0, 0.922);
+            width: clamp(200px, 100%,  600px);
+            width: clamp(50rem, 30vw, 70rem);
+            width: clamp(10vw,  20em, 100vw);
+         }
+    </style>
+</head>
+<body>
+   <div class="wraper">
+        <div class="content">
+        </div>
+   </div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Login.css">
+    <script src="Login.js" defer></script>
+    <title>Login</title>
+</head>
+<body>
+    <div id="container" >
+        <div class="infor">
+            <p >Given Infor:</p>
+            <p>Email: <span  data-email>gic@gmail.com</span></p>
+            <p>Password:<span data-password>Gic123</span> </p>
+            
+        </div>
+        <form action="">
+            <fieldset>
+                <img src="../pf.png" alt="userPro">
+                <div class="input">
+                    <label for="Email">Email</label>
+                    <input type="text" id="Email" placeholder="Enter email">
+                </div>
+                <div class="input">
+                    <label for="pwd">Password</label>
+                    <input type="password" id="pwd" placeholder="Enter password">
+                </div>
+                <div class="failed">Incorrect Email or password</div>
+                <input type="submit" value="Login">
+            </fieldset>
+        </form>
+    </div>
+    <div id="successfull" class="hide">
+        <h2>Welcome to home page</h2>
+        <p>You will be automatically logout after <span class="time"><strong>30</strong></span>s</p>
+        <p>It will auto logout when on time</p>
+        <button class="loggout">Logout</button>
+    </div>
+</body>
+</html>
