@@ -1,0 +1,49 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+.wrapper {
+    width: 800px;
+    height: 500px;
+    padding: 2rem;
+    padding-top: 0;
+    border: 5px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.wrapper>:first-child{
+    font-size: 9rem;
+    font-family: Irish Grover;
+}
+.wrapper>:nth-child(2){
+    height: 15%;
+    font-size: 3.1rem;
+    font-family: Irish Grover;
+}
+.wrapper>:nth-child(3){
+    margin: 1%;
+    height: 13%;
+    font-size: 1.5rem;
+    border-radius: 10px ;
+    border: 1px solid gray;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    background: #ebebeb;
+}
+.wrapper>:last-child{
+    height: 38%;
+    margin: 1%;
+    font-size: 3.1rem;
+    color: orangered;
+    font-weight: bold;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}

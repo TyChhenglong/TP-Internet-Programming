@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div style="font-size: 5rem;">😒</div>
+        <div>Are You boring?</div>
+        <div>
+            <button onclick="fetchActivity()">Tell me what to do?</button>
+        </div>
+        <div id="loader"></div>
+        <div id="activity-name">
+        </div>
+    </div>
+    <script>
+        const activity = document.getElementById("activity-name");
+        let loader = document.getElementById("loader");
+        loader.style.display="none"
+        function fetchActivity() {
+            activity.innerHTML =""
+            loader.style.display="block"
+            fetch("https://www.boredapi.com/api/activity").then(async (res) => {
+
+                let data = await res.json();
+                activity.innerHTML = `<Strong>${data["activity"]}</Strong>
+                                    <div><img draggable="false" src="./icon/type.webp" alt="">Type:&ensp;${data["type"]}</div>
+                                    <div><img draggable="false" src="./icon/participants.png" alt="">Participants:&ensp;${data["participants"]}</div>
+                                    <div><img draggable="false" src="./icon/Dollar.png" alt="">Price:&ensp;${data["price"]}</div>
+                                    <div><img draggable="false" src="./icon/link.jpg" alt="">Link:&ensp;<a href="${data["link"]}">${data["link"]}</a></div>`
+                    ;
+            }).then(() => {
+                loader.style.display="none"
+            })
+
+        }
+    </script>
+</body>
+
+</html>

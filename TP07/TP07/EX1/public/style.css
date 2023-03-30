@@ -1,0 +1,102 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+.wrapper {
+    width: 800px;
+    height: 500px;
+    padding: 2rem;
+    border: 5px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.wrapper>:nth-child(1) {
+    height: 30%;
+}
+.wrapper>:nth-child(2) {
+    height: 18%;
+    font-family: Irish Grover;
+    font-size: 2rem;
+}
+.wrapper>:nth-child(3) {
+    height: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.wrapper>:nth-child(3) button {
+    width: fit-content;
+    padding: 0.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    border-radius: 6px;
+    border: none;
+    background-color: hsl(220, 100%, 55%);
+    font-family: Irish Grover;
+    color: white;
+}
+.wrapper>:nth-child(3) button:active {
+    background-color: hsl(60, 100%, 45%);
+    color: hsl(220, 100%, 55%);
+    cursor: pointer;
+}
+.wrapper>:nth-child(3) button:hover {
+    cursor: pointer;
+}
+.wrapper>:last-child {
+    height: 100%;
+    background-color: hsl(0, 0%, 95%);
+    width: 30%;
+    padding: 1rem;
+    padding-left: 5%;
+    border-radius: 5px;
+    border: 1px solid #d5d5d5e1;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    row-gap: 8%;
+}
+.wrapper>:last-child>:nth-child(1) {
+    min-height: 15%;
+    height: fit-content;
+    width: 100%;
+    padding-right: 2rem;
+    display: flex;
+    justify-content: center;
+}
+.wrapper>:last-child div {
+    display: flex;
+    align-items: center;
+    overflow: auto;
+}
+.wrapper>:last-child img {
+    height: 1.5rem;
+    margin-right: 5%;
+}
+#loader {
+    position: absolute;
+    top: 55%;
+    border: 16px solid #ffffff;
+    border-radius: 50%;
+    border-top: 16px solid hsl(240, 100%, 40%);
+    border-bottom: 16px solid hsl(240, 100%, 40%);
+    width: 100px;
+    height: 100px;
+    animation: spin 1500ms linear infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

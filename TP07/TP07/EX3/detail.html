@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="../public/style.css"> -->
+    <style>
+        .wrapper {
+            margin: auto;
+            width: 800px;
+            height: 650px;
+            border: 5px solid black;
+            margin-top: 5rem;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            column-gap: 1%;
+            position: relative;
+        }
+        #bookDetail {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background-color: #fff;
+        }
+        #bookDetail>:first-child {
+            height: 40%;
+            width: 100%;
+            background-color: hsl(271, 100%, 10%);
+            color: white;
+            font-size: 1.4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        #bookDetail>:first-child>:last-child {
+            font-size: 0.8rem;
+        }
+        #bookDetail>:last-child {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #bookDetail>:last-child>* {
+            margin: 1rem;
+        }
+        #bookDetail>:last-child>:last-child {
+            height: 10rem;
+            width: 9rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div id="bookDetail"></div>
+
+    </div>
+    <script>
+        const bookList = document.getElementsByClassName("right-bar")[0];
+        const wrapper = document.getElementsByClassName("wrapper")[0];
+        const bookDetail = document.getElementById("bookDetail")
+        seeDetail();
+        function seeDetail() {
+            const DATA = JSON.parse(localStorage.getItem("backgroundColor"));
+            fetch(`https://jsonplaceholder.typicode.com/photos/${DATA.id}`).then(async (res) => {
+                const data = await res.json();
+                bookDetail.innerHTML = `
+                    <div>
+                        <strong>${data.title}</strong>
+                        <p>${data.albumId}</p>
+                        <p>Resize brower windows</p>
+                    </div>
+                    <div>
+                        <div>${data.id}</div>
+                        <div style="background-color:${DATA.bgc}; color:white">150 x 150</div>
+                    </div>`
+            })
+            localStorage.removeItem("backgroundColor");
+        }
+    </script>
+</body>
+
+</html>
