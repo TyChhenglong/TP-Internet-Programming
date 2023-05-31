@@ -111,6 +111,7 @@ button:hover {
     margin-top: 0;
     font-size: 0.8rem;
 }
+
 #content>:nth-child(4) {
     color: white;
     font-weight: bold;
